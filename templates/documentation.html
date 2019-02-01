@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Stats</title>
+        <title>API</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -30,7 +30,7 @@
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/">Bowl Center</a>
+                        <a class="navbar-brand" href="/">Voter Influence</a>
                       </div>
                   
                       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,9 +43,9 @@
                               <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" aria-label="menu"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="/">Home</a></li>
-                              <li><a href="/stats">Stats</a></li>
+                              <li><a href="/documentation">Documentation</a></li>
                               <li role="separator" class="divider"></li>
-                              <li><a href="/apiV1.0">API Docs</a></li>
+                              <li><a href="/survey">Survey</a></li>
                             </ul>
                           </li>
                         </ul>
@@ -53,114 +53,23 @@
                     </div><!-- /.container-fluid -->
                   </nav>
             </div> <!--End Navbar row-->
+<!-------------------------------------------------------------------------------------------------->
+            <div class="col-md-12"> Add Documentation Content Here </div>
 
-            <div class="row"> <!--Tabbed panels row-->
-              <div class="col-xs-12 col-md-4"> <!--Start All Bowls Games col-->
-                <h3 class="text-center">Bowl Games and Teams</h3>
-                <p>
-                  Click the "Get Data" button to see a list of all NCAA College Football bowl games from 2007 through 2016<br/>
-                  and a list of all teams that played.
-                </p>
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" id="historyBTN">Get Data</button>
-                </span>
-              </div><!--End All Bowl Games col-->
 
-              <div class="col-xs-12 col-md-4"> <!--Start Game Outcomes col-->
-                <h3 class="text-center">Bowl Game Outcomes</h3>
-                <p>Enter a year in the field below and click the "Get Data" button to see the bowl game outcomes for that year.</p>
+<!--------------------------------------------------------------------------------------------------------------------------->            
+<div class="row text-center"> <!--Start footer row-->              
+  <div class="footer navbar-fixed-bottom">1.38 (c) | UCF Data Boot Camp</div>                         
+</div><!--End footer row-->
 
-                <!--div class="input-group mb-3"-->
-                    <div class="input-group-prepend">
-                      <label class="input-group-text" for="outcomeYear">Year</label>
-                    </div>
-                    <select class="custom-select" id="outcomeYear">
-                      <option selected>Select year...</option>
-                      {% for var in years %}
-                      <option value="{{var}}">{{var}}</option>
-                      {% endfor %}
-                    </select>
-                    <br/>
-                    <br/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="outcomeBTN">Get Data</button>
-                    </span>  
-                <!--/div>                -->
-<!--                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter year..." id="outcomeYear">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button" id="outcomeBTN">Get Data</button>
-                    </span>
-                  </div>-- /input-group --> 
-              </div> <!--End Game Outcomes col-->
+</div><!--End main container-->
 
-              <div class="col-xs-12 col-md-4"> <!--Start Player Roster col-->
-                <h3 class="text-center">Bowl Game Rosters</h3>
-                <p>Enter a year and select a bowl game to see a roster of all playters who played in the game.</p>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text" for="rosterYear">Year</label>
-                    </div>
-                    <select class="custom-select" id="rosterYear">
-                      <option selected>Select year...</option>
-                      {% for val in years %}
-                      <option value="{{val}}">{{val}}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
-                  <br/>
-                  <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="rosterBowl">Bowl Game</label>
-                      </div>
-                      <select class="custom-select" id="rosterBowl">
-                        <option selected>Select bowl...</option>
-
-                        {% for val in bowls %}
-                        <option value="{{val}}">{{val}}</option>
-                        {% endfor %}
-                        
-                      </select>
-                    </div>
-                    <br/>
-                    <span class="input-group-btn" id="rosterBTN">
-                        <button class="btn btn-default" type="button">Get Data</button>
-                    </span>
-              </div> <!--Start Player Roster col-->
-
-            </div> <!--End Tabbed panels row-->
-                <!--Tabbed panels ref https://getbootstrap.com/docs/3.3/javascript/#tabs-usage-->
-            
-            <div class="row text-center"> <!--Start footer row-->              
-              <div class="footer navbar-fixed-bottom">Slack-Lackers (c) | UCF Data Boot Camp</div>                         
-            </div><!--End footer row-->
-
-        </div><!--End main container-->
-
-        <!--OnClick functions-->
-        <!--Roster onclick-->
-        <script type='text/javascript'>
-          document.getElementById('historyBTN').onclick = function () {
-              apiRoute = 'https://bowl-center.herokuapp.com/apiV1.0/history'; 
-              location.href = apiRoute;
-          };
-
-          document.getElementById('outcomeBTN').onclick = function () {
-              var gYear = document.getElementById('outcomeYear');
-              apiRoute = 'https://bowl-center.herokuapp.com/apiV1.0/outcome/' + gYear.value;
-              location.href = apiRoute;
-          };          
-
-          document.getElementById('rosterBTN').onclick = function () {
-              var bYear = document.getElementById('rosterYear');
-              var bowl = document.getElementById('rosterBowl');
-              apiRoute = 'https://bowl-center.herokuapp.com/apiV1.0/roster/' + bowl.value + '/' + bYear.value; 
-              location.href = apiRoute;
-          };
-        </script>
-                <!--Latest minified jquery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    </body>
+  <!--Latest minified jquery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- minified plotly.js -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="/static/assets/js/app.js"></script>
+</body>
 </html>

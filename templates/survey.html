@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}"/>
+        
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -30,7 +31,7 @@
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/">Bowl Center</a>
+                        <a class="navbar-brand" href="/">Voter Influence</a>
                       </div>
                   
                       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,9 +44,9 @@
                               <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" aria-label="menu"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="/">Home</a></li>
-                              <li><a href="/stats">Stats</a></li>
+                              <li><a href="/documentation">Documentation</a></li>
                               <li role="separator" class="divider"></li>
-                              <li><a href="/apiV1.0">API Docs</a></li>
+                              <li><a href="/survey">Survey</a></li>
                             </ul>
                           </li>
                         </ul>
@@ -53,147 +54,20 @@
                     </div><!-- /.container-fluid -->
                   </nav>
             </div> <!--End Navbar row-->
-
-            <div class="row"> <!--Content row-->
-                <div class="col-md-1" id="leftNav"> <!--Left nav-->
-                    <nav class="nav flex-column">
-                        <a class="nav-link active" href="/apiV1.0">About API</a><br/>
-                        <a class="nav-link" href="/apiV1.0/extract">ETL Process</a><br/>
-                        <a class="nav-link" href="/apiV1.0/data">Data</a><br/>
-                    </nav>
-                </div> <!--End Left Nav col div-->
-                
+<!-------------------------------------------------------------------------------------------------->
+            <div class="row"> <!--Content row-->              
                 <div class="col-md-10"> <!--Content-->
-                    <h2>API Information</h2>
-                    <br>
-                    <h3>1. Bowl History</h3>
-                    <br>
-                    <p><strong>Description: </strong>Returns distinct list of all bowls played over the 10 year span including at set of aggregate columns</p>
-                    <P><strong>API Endpoint: </strong>/apiV1.0/history</p>
-                    <p><strong>Input Parameters: </strong>   
-                        <li style="margin-left:30px;">Year:  any value betwen 2007 and 2016</li>
-                    </p>
-                    <p><strong>Output Overview: </strong>JSON data containing the following attributes
-                        <li style="margin-left:30px;">Count Games:  Amount of time the specific bowl was played over the time window</li>
-                        <li style="margin-left:30px;">Min Year:  First year, in the 10 year span, in which the bowl was played</li>
-                        <li style="margin-left:30px;">Max Year:  Last year, in the 10 year span, in which the bowl was played</li>
-                        <li style="margin-left:30px;">Home Teams:  Delimited distinct list of all home teams over the time window</li>
-                        <li style="margin-left:30px;">Away Teams:  Delimited distinct list of all away teams over the time window</li>
-                    </p> 
+                                      
                     <p><strong>Sample Data:</strong></p>   
-                    <br>
-                    <table class="table table-hover table-condensed">                        
-                        <thead>
-                            <tr>
-                                <th>Bowl</th>
-                                <th>Count Games</th>
-                                <th>Min Year</th>
-                                <th>Max Year</th>
-                                <th>Home Teams</th>
-                                <th>Away Teams</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for row in rsHistory %}
-                            <tr>
-                                <td>{{row[0]}}</td>
-                                <td>{{row[1]}}</td>
-                                <td>{{row[2]}}</td>
-                                <td>{{row[3]}}</td>
-                                <td>{{row[4]}}</td>
-                                <td>{{row[5]}}</td>                                                                                                                                                                
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-
-                    <br>
-                    <br>
-                    <h3>2. Bowl Outcome</h3>
-                    <br>
-                    <p><strong>Description: </strong>Returns all bowls games for a given year and outlines the particpants</p>
-                    <P><strong>API Endpoint: </strong>/apiV1.0/outcome/&lt;year&gt;</p>
-                    <p><strong>Input Parameters: </strong>
-                        <li style="margin-left:30px;">Year:  any value betwen 2007 and 2016</li>
-                    </p>   
-                    <p><strong>Output Overview: </strong>JSON data containing the following attributes
-                        <li style="margin-left:30px;">Bowl</li>
-                        <li style="margin-left:30px;">Home Team</li>
-                        <li style="margin-left:30px;">Away Team</li>
-                        <li style="margin-left:30px;">Home Score</li>
-                        <li style="margin-left:30px;">Away Score</li>
-                        <li style="margin-left:30px;">Winning Team</li>
-                        <li style="margin-left:30px;">Loosing Team</li>
-                    </p> 
-                    <p><strong>Sample Data:</strong></p>   
-                    <br>
-                    <table class="table table-hover table-condensed">                        
-                        <thead>
-                            <tr>
-                                <th>Bowl</th>
-                                <th>Home Team</th>
-                                <th>Away Team</th>
-                                <th>Home Score</th>
-                                <th>Away Score</th>
-                                <th>Winning Team</th>
-                                <th>Loosing Team</th>                            
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for row in rsOutcome %}
-                            <tr>
-                                <td>{{row[0]}}</td>
-                                <td>{{row[1]}}</td>
-                                <td>{{row[2]}}</td>
-                                <td>{{row[3]}}</td>
-                                <td>{{row[4]}}</td>
-                                <td>{{row[5]}}</td>
-                                <td>{{row[6]}}</td>                                
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-
-                    <br>
-                    <br>
-                    <h3>3. Bowl Roster</h3>
-                    <br>
-                    <p><strong>Description:</strong> Returns listing of all players who played in specific bowl game</p>
-                    <P><strong>API Endpoint: </strong>/apiV1.0/roster/&lt;bowl&gt;/&lt;year&gt;</p>
-                    <p><strong>Input Parameters:</strong>
-                        <li style="margin-left:30px;">Bowl:  Rose Bowl for sample below</li>
-                        <li style="margin-left:30px;">Year:  2017 in sample below</li>
-                    </p>   
-                    <p><strong>Output Overview:</strong> JSON data containing the following attributes
-                        <li style="margin-left:30px;">Team</li>
-                        <li style="margin-left:30px;">Player</li>
-                    </p> 
-                    <p><strong>Sample Data:</strong></p>   
-                    <br>
-                    <table class="table table-hover table-condensed">                        
-                        <thead>
-                            <tr>
-                                <th>Team</th>
-                                <th>Player</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for row in rsRoster %}
-                            <tr>
-                                <td>{{row[0]}}</td>
-                                <td>{{row[1]}}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    </container>
+                   
                 </div> <!--End Left Nav col div-->
                 
                 
             </div> <!--End Content panels row-->
-            
+
+<!--------------------------------------------------------------------------------------------------------------------------->            
             <div class="row text-center"> <!--Start footer row-->              
-                <div class="footer navbar-fixed-bottom">Slack-Lackers (c) | UCF Data Boot Camp</div>                         
+                <div class="footer navbar-fixed-bottom">1.38 (c) | UCF Data Boot Camp</div>                         
             </div><!--End footer row-->
 
         </div><!--End main container-->
@@ -202,5 +76,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+                <!-- minified plotly.js -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="/static/assets/js/app.js"></script>
     </body>
 </html>
