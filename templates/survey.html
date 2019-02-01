@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}"/>
+        <link rel="stylesheet" href="{{url_for('static', filename='assets/css/survey-style.css')}}"/>
         
     </head>
     <body>
@@ -54,18 +55,56 @@
                     </div><!-- /.container-fluid -->
                   </nav>
             </div> <!--End Navbar row-->
-<!-------------------------------------------------------------------------------------------------->
-            <div class="row"> <!--Content row-->              
-                <div class="col-md-10"> <!--Content-->
-                                      
-                    <p><strong>Sample Data:</strong></p>   
-                   
-                </div> <!--End Left Nav col div-->
-                
-                
-            </div> <!--End Content panels row-->
 
-<!--------------------------------------------------------------------------------------------------------------------------->            
+        <header class="v-header container">
+                <div class="fullscreen-video-wrap">
+                    <video src="{{url_for('static', filename='assets//mov/code.mov')}}" autoplay="true" loop= "true"></video>
+                </div>
+
+                    <div class="header-overlay"></div>
+                    <div class="header-content">
+                    <h1>Electoral College Class Survey</h1>
+                    <h2>"Are all Citizens created equal?"</h2>
+                    <h3>Does the current system actually work?</h3>
+                    <form class= "form-horizontal">
+                
+                        <div class="form-group">
+                                        
+                            <div class="voter_question">
+                                <label class="voter_question">
+                                <input name="vote" type="radio" value="0" /> Yes
+                                </label>
+                            </div>
+            
+                            <div class="voter_question">
+                                <label class="voter_question">
+                                    <input name="vote" type="radio" value="1" /> No
+                                    </label>
+                                </div>
+            
+                            <div class="voter_question">
+                                <label class="voter_question">
+                                    <input name="vote" type="radio" value="2" /> I Don't Know
+                                </label>
+                                </div>
+
+                            <!--Submit button-->
+                            <div class="form-group">
+                            
+                                <button type="submit" class="btn btn-primary"> Cast your vote! </button>
+                                    <!--^^onclick= insert vote counting function here^^-->
+                
+                            
+                            </div>  
+                            </div>
+                        </div>
+                        
+                        
+                        </form>               
+                    </div>
+            </header>
+
+  
             <div class="row text-center"> <!--Start footer row-->              
                 <div class="footer navbar-fixed-bottom">1.38 (c) | UCF Data Boot Camp</div>                         
             </div><!--End footer row-->
