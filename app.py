@@ -10,7 +10,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, MetaData
 from sqlalchemy.pool import StaticPool
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request, redirect
 
 
 
@@ -121,9 +121,9 @@ def getResults():
 def postResults(value):
     if request.method == "POST":
         #Code to sql insert query statement
-
+        print(request.value)
     return (
-        print(selection)
+        # print(selection)
         render_template("survey.html")
     )
 
