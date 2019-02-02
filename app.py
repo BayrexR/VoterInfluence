@@ -104,7 +104,7 @@ def survey():
     )
 
 #======================
-#Route to get results of survey from db for plot
+#GET Route to pull results of survey from db for plot
 #======================
 @app.route("/apiV1.0/get_results")
 def getResults():
@@ -112,6 +112,19 @@ def getResults():
     results = jsonify(surv_results)
     return (
         render_template("survey.html", results=results)
+    )
+
+#======================
+#POST Route publish survey selection to db
+#======================
+@app.route("/apiV1.0/post_results/<value>", methods=["GET", "POST"])
+def postResults(value):
+    if request.method == "POST":
+        #Code to sql insert query statement
+
+    return (
+        print(selection)
+        render_template("survey.html")
     )
 
 
