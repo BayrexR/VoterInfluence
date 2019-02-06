@@ -30,9 +30,10 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 # Assign table refference to a vars
-# BowlHistory = Base.classes.flsk_bowl_history
-# BowlOutcome = Base.classes.flsk_bowl_outcome
-# BowlPlayers = Base.classes.flsk_bowl_players
+StatesIndex = Base.classes.states_i_vw
+PropertyIndex = Base.classes.props_i_vw
+StatesView = Base.classes.states_vw
+Survey = Base.classes.class_survey
 
 # Create Session obj
 session = Session(engine)
@@ -78,6 +79,20 @@ app = Flask(__name__)
 @app.route("/")
 def welcome():
     """List all available api routes."""
+    states = []
+    statePop = []
+    indexVal = []
+
+    stateData = (session.query(StatesIndex.state, 
+                             StatesIndex.influence_index, 
+                             StatesIndex.population)
+                .order_by(StatesIndex.state)                             
+                .all())
+    for s in stateData:
+        states.push(s[0])
+        statePop.push(s[2])
+        indexVal.push(s[1])
+
     return (
         render_template("index.html")
     )
@@ -134,14 +149,14 @@ def postResults(value):
 # @app.route("/apiV1.0/history")
 # def history():
 
-#     results = (session.query(BowlHistory.bowl, 
-#                              BowlHistory.cnt_games, 
-#                              BowlHistory.min_year, 
-#                              BowlHistory.max_year, 
-#                              BowlHistory.home_teams, 
-#                              BowlHistory.away_teams)
-#                 .order_by(BowlHistory.bowl)                             
-#                 .all())
+    state = (session.query(StatesIndex.state, 
+                             BowlHistory.cnt_games, 
+                             BowlHistory.min_year, 
+                             BowlHistory.max_year, 
+                             BowlHistory.home_teams, 
+                             BowlHistory.away_teams)
+                .order_by(BowlHistory.bowl)                             
+                .all())
     
 #     if (len(results) > 0):
 #         return jsonify(results) 
