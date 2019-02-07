@@ -1,94 +1,201 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
-<html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Voter Influence</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}"/>
-        
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <div class="container"> <!--Start main container-->
+<html> 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Voter Influence</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}"/>
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style_leaf.css')}}"/>
 
-            <div class="row"> <!--Navbar row-->
-                <nav class="navbar navbar-inverse">
-                    <div class="container-fluid">
-                      <!-- Brand and toggle get grouped for better mobile display -->
-                      <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand nav-text" href="/">Voter Influence</a>
-                      </div>
-                  
-                      <!-- Collect the nav links, forms, and other content for toggling -->
-                      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                        <ul class="nav navbar-nav navbar-right">
-                          <li><a href="#"></a></li>
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                              <span class="glyphicon glyphicon-menu-hamburger nav-text" aria-hidden="true" aria-label="menu"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="/">Home</a></li>
-                              <li><a href="/documentation">Documentation</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><a href="/survey">Survey</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </div><!-- /.navbar-collapse -->
-                    </div><!-- /.container-fluid -->
-                  </nav>
-            </div> <!--End Navbar row-->
-
-            <div class="row " > <!--Main row-->
-
-              <div class="row"> <!--Begin Map Row-->
-                <div class="col-md-12">
-                  <div id="map-id">
-                    <img src="../static/assets/img/placeHolder.png"/>
-                  </div> <!--Interactive map div-->
-                </div>
-              </div><!--End Map Row-->
-
-              <div class="row"><!--Begin Multiplot Row-->
-                <div class="col-md-12">
-                  <div id="multi-plot"></div> <!--Multiplot div-->
-                </div>
-              </div><!--End Multiplot Row-->
-              
-            </div> <!--Main row-->
+  <!-- Leaflet  -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css">
+  <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+</head>
+<body>    
+    <div class="container"> <!--Start main container-->
 
 
-            
-            </div> <!--End Content row-->
-<!----------------------------------------------------------------------------------------------->
-            <div class="row text-center"> <!--Start footer row-->              
-              <div class="footer navbar-fixed-bottom nav-text">1.38 (c) | UCF Data Boot Camp</div>                         
-          </div><!--End footer row-->
+      <div class="row"> <!--Navbar row-->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand nav-text" href="/">Voter Influence</a>
+              </div>
+          
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      </div><!--End main container-->
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#"></a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      <span class="glyphicon glyphicon-menu-hamburger nav-text" aria-hidden="true" aria-label="menu"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/">Home</a></li>
+                      <li><a href="/documentation">Documentation</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="/survey">Survey</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+    </div> <!--End Navbar row-->
 
-              <!--Latest minified jquery-->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-              <!-- Latest compiled and minified JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-              <!-- minified plotly.js -->
-      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-      <script src="/static/assets/js/app.js"></script>
-  </body>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h5>Property:         
+            <select class="custom-select" id="selProperty" onchange="optionChanged(this.value)">              
+              {% for prop in rsProp %}
+                <option value="{{prop[0]}}">{{prop[1]}}</option>
+              {% endfor %}
+            </select>
+        </h5> 
+        </div>
+      </div>
+      <div class="row" > 
+        <div class="col-xs-6">
+            <div class="text-center">
+              <div id="map-id" style="height: 450px;"></div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="text-center">
+              <div id="plot-id" style="height: 450px;"></div>      
+            </div>
+        </div>
+      </div>
+      <div class="row" > 
+          <div class="col-xs-3">
+              <div class="text-center">
+                <div id="plot-swing-states-id" style="height: 250px;"></div>
+              </div>
+          </div>
+          <div class="col-xs-3">
+              <div class="text-center">
+                <div id="plot-swing-electoral-id" style="height: 250px;"></div>      
+              </div>
+          </div>
+          <div class="col-xs-3">
+              <div class="text-center">
+                <div id="plot-swing-turnout-id" style="height: 250px;"></div>      
+              </div>
+          </div>
+          <div class="col-xs-3">
+              <div class="text-center">
+                <div id="plot-swing-population-id" style="height: 250px;"></div>      
+              </div>
+          </div>
+        </div>
+        <script>  
+        // Declare global variables to be used in JS scripts
+        var geo = "";
+        var mpState = []
+        var mpPopulation = []
+        var mpInfluenceIndex = []
+        var mpInfluenceIndexEr = []
+        var mpSwingState = []
+        var mpVotingPopElig = []
+        var mpVoterTurnout = []
+        var mpElectoral = []
+        var first = true;
+        var pieSwingStateLabel = []
+        var pieSwingStateValue = []
+        var pieSwingElectoralLabel = []
+        var pieSwingElectoralValue = []
+        var pieSwingTurnoutLabel = []
+        var pieSwingTurnoutValue = []
+        var pieSwingPopulationLabel = []
+        var pieSwingPopulationValue = []
+      </script>  
+
+      {% for rowState in rsState %}
+      <script>
+        // Append individual geo json pieces together
+        if (first) {
+          geo += '{{rowState[2]}}'
+        }
+        else {
+          geo += ',' + '{{rowState[2]}}'
+        }
+        first = false;                
+
+        // Populate arrays to be used by statePlot
+        mpState.push('{{rowState[1]}}')
+        mpPopulation.push('{{rowState[3]}}')
+        mpInfluenceIndex.push('{{rowState[4]}}')
+        mpInfluenceIndexEr.push('{{rowState[5]}}')
+        mpSwingState.push('{{rowState[6]}}')
+        mpVotingPopElig.push('{{rowState[7]}}')
+        mpVoterTurnout.push('{{rowState[8]}}')
+        mpElectoral.push('{{rowState[9]}}')
+      </script>                                
+      {% endfor %}
+
+      {% for rowSwingState in rsSwingState %}
+      <script>
+        // Populate arrays to be used by swingPlot
+        pieSwingStateLabel.push('{{rowSwingState[0]}}')
+        pieSwingStateValue.push('{{rowSwingState[1]}}')
+      </script>                                
+      {% endfor %}
+
+      {% for rowSwingElectoral in rsSwingElectoral %}
+      <script>
+        // Populate arrays to be used by swingPlot
+        pieSwingElectoralLabel.push('{{rowSwingElectoral[0]}}')
+        pieSwingElectoralValue.push('{{rowSwingElectoral[1]}}')
+      </script>                                
+      {% endfor %}
+
+      {% for rowSwingTurnout in rsSwingTurnout %}
+      <script>
+        // Populate arrays to be used by swingPlot
+        pieSwingTurnoutLabel.push('{{rowSwingTurnout[0]}}')
+        pieSwingTurnoutValue.push('{{rowSwingTurnout[1]}}')
+      </script>                                
+      {% endfor %}
+
+      {% for rowSwingPopulation in rsSwingPopulation %}
+      <script>
+        // Populate arrays to be used by swingPlot
+        pieSwingPopulationLabel.push('{{rowSwingPopulation[0]}}')
+        pieSwingPopulationValue.push('{{rowSwingPopulation[1]}}')
+      </script>                                
+      {% endfor %}
+
+    <div class="row text-center"> <!--Start footer row-->              
+      <div class="footer navbar-fixed-bottom nav-text">1.38 (c) | UCF Data Boot Camp</div>                        
+    </div><!--End footer row-->
+  </div><!--End main container-->
+  
+
+  <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>    
+  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+  <!--Latest minified jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- D3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+  <!-- API Key -->
+  <script type="text/javascript" src="static/assets/js/config.js"></script>
+  <!-- Our JavaScript -->
+  <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script type="text/javascript" src="static/assets/js/logic_plot.js"></script>
+  <script type="text/javascript" src="static/assets/js/logic_map.js"></script>
+
+</body>
 </html>
