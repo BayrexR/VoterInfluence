@@ -44,30 +44,6 @@ session = Session(engine)
 app = Flask(__name__)
 
 
-#=========================
-#                Functions
-#=========================
-#=========================
-# global varriables
-#=========================
-
-
-
-#=========================
-#Create Dropdown arrays
-#=========================
-#Years dropdown menu
-# def yearsMenu():
-
-#     with engine.connect() as con:
-#         rs = con.execute('SELECT year FROM years_vw')
-#         if (len(years) < 1):
-#             for row in rs:
-#                 years.append(row.year)
-#     return years
-
-
-
 #========================
 #          Publish Routes
 #========================
@@ -78,25 +54,17 @@ app = Flask(__name__)
 #======================
 @app.route("/")
 def welcome():
-    """List all available api routes."""
-    states = []
-    statePop = []
-    indexVal = []
-
-    stateData = (session.query(StatesIndex.state, 
-                             StatesIndex.influence_index, 
-                             StatesIndex.population)
-                .order_by(StatesIndex.state)                             
-                .all())
-    for s in stateData:
-        states.push(s[0])
-        statePop.push(s[2])
-        indexVal.push(s[1])
+    with engine.connect() as con:
+        rsState = con.execute('SELECT state_id, state, geojson, population / 1000000 as population, influence_index, influence_index_er, swing_state, voting_pop_elig, voter_turnout, electoral FROM states_i_vw')
+        rsProp = con.execute('SELECT prop_return, prop_display FROM props_i_vw')    
+        rsSwingState = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, count(1) as value from   states_i_vw group by swing_state")
+        rsSwingElectoral = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, sum(electoral) as value from   states_i_vw group by swing_state")
+        rsSwingTurnout = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, avg(voter_turnout) as value from   states_i_vw group by swing_state")
+        rsSwingPopulation = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, sum(population) as value from   states_i_vw group by swing_state")
 
     return (
-        render_template("index.html")
+       render_template("index.html", rsState=rsState, rsProp=rsProp, rsSwingState=rsSwingState, rsSwingElectoral=rsSwingElectoral, rsSwingTurnout=rsSwingTurnout, rsSwingPopulation=rsSwingPopulation)
     )
-
 
 #=====================
 #Route to Project Documentation Page
@@ -141,27 +109,6 @@ def postResults(value):
         # print(selection)
         render_template("survey.html")
     )
-
-
-#=====================
-#Get route returns list of all bowl games, year, team1, team2, winner
-#=====================
-# @app.route("/apiV1.0/history")
-# def history():
-
-    state = (session.query(StatesIndex.state, 
-                             BowlHistory.cnt_games, 
-                             BowlHistory.min_year, 
-                             BowlHistory.max_year, 
-                             BowlHistory.home_teams, 
-                             BowlHistory.away_teams)
-                .order_by(BowlHistory.bowl)                             
-                .all())
-    
-#     if (len(results) > 0):
-#         return jsonify(results) 
-#     else:
-#         return "There is no data for " + year + "."
 
 
 if __name__ == '__main__':
