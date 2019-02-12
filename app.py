@@ -102,9 +102,25 @@ def getResults():
 #======================
 @app.route("/apiV1.0/post_results/<value>", methods=["GET", "POST"])
 def postResults(value):
+    print(value)
     if request.method == "POST":
         #Code to sql insert query statement
-        print(request.value)
+        if value == "yes":
+            #instert a record with a yes value of 1
+            with engine.connect() as con:
+                print(value)
+                con.execute('INSERT INTO class_survey (YES) VALUES (1);')
+        elif value == "no":
+            #insert a rocord with a no value of 1
+            with engine.connect() as con:
+                print(value)
+                con.execute('INSERT INTO class_survey (NO) VALUES (1);')
+        elif value == "idk":
+            #insert a rocord with a idk value of 1
+            with engine.connect() as con:
+                print(value)
+                con.execute('INSERT INTO class_survey (IDK) VALUES (1);')
+        print(value)
     return (
         # print(selection)
         render_template("survey.html")

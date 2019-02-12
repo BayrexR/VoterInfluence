@@ -66,32 +66,32 @@
                     <h1>Electoral College Class Survey</h1>
                     <h2>"Are all Citizens created equal?"</h2>
                     <h3>Does the current system actually work?</h3>
-                    <form class= "form-horizontal">
+                    <form class= "form-horizontal" id="vote_form">
                 
                         <div class="form-group">
                                         
                             <div class="voter_question">
                                 <label class="voter_question">
-                                <input name="vote" onclick="handleClick(this);" type="radio" value="0" /> Yes
+                                <input name="vote"  type="radio" value="yes" /> Yes
                                 </label>
                             </div>
             
                             <div class="voter_question">
                                 <label class="voter_question">
-                                    <input name="vote" onclick="handleClick(this);" type="radio" value="1" /> No
+                                    <input name="vote"  type="radio" value="no" /> No
                                     </label>
                                 </div>
             
                             <div class="voter_question">
                                 <label class="voter_question">
-                                    <input name="vote" onclick="handleClick(this);" type="radio" value="2" /> I Don't Know
+                                    <input name="vote"  type="radio" value="idk" /> I Don't Know
                                 </label>
                                 </div>
 
                             <!--Submit button-->
                             <div class="form-group">
                             
-                                <button type="submit" class="btn btn-primary" id= "castedVote" href= ()> Cast your vote! </button>
+                                <button type="submit" class="btn btn-primary" onclick="handleClick(this);" id="castedVote" href= ()> Cast your vote! </button>
                                     <!--^^onclick= insert vote counting function here^^-->
                 
                             
@@ -125,6 +125,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
                 <!-- minified plotly.js -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <script src="/static/assets/js/app.js"></script>
+        <!-- <script type="text/javascript" src="/static/assets/js/app.js"></script> -->
+        <script type="text/javascript" src="/static/assets/js/survey.js"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='assets/js/survey.js')}}"></script>
+        <!-- <script type="text/javascript" src="{{url_for('static', filename='assets/js/app.js')}}"></script> -->
     </body>
 </html>

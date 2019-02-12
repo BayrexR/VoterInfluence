@@ -1,12 +1,33 @@
 // Take in user data and store into a table inside our DB
 
 //Variable for route to table db
-var dataRoute = [];
+// var dataRoute = [];
+
+//get radio button value
+function getRadioVal(form, name) {
+    var val;
+    // get list of radio buttons with specified name
+    var radios = form.elements[name];
+    
+    // loop through list of radio buttons
+    for (var i=0, len=radios.length; i<len; i++) {
+        if ( radios[i].checked ) { // radio checked?
+            val = radios[i].value; // if so, hold its value in val
+            break; // and break out of for loop
+        }
+    }
+    return val; // return value of checked radio or undefined if none checked
+}
+
 
 //Select vote button
-function handleClick(this) {
-    var voteValue = this.value;
-    localRoute = '/postRoute'
+function handleClick(vote) {
+    event.preventDefault();
+
+    var voteValue = getRadioVal(document.getElementById('vote_form'), "vote");
+    console.log(voteValue);
+    route = 'https://voter-influence.herokuapp.com/apiV1.0/post_results/'+voteValue;
+    location.href = route;
 };
 
 
