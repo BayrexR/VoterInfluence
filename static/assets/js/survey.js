@@ -26,7 +26,9 @@ function handleClick(vote) {
 
     var voteValue = getRadioVal(document.getElementById('vote_form'), "vote");
     console.log(voteValue);
+    // https://voter-influence.herokuapp.com
     route = 'https://voter-influence.herokuapp.com/apiV1.0/post_results/'+voteValue;
+    console.log(route);
     location.href = route;
 };
 
