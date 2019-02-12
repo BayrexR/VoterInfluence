@@ -30,10 +30,10 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 # Assign table refference to a vars
-StatesIndex = Base.classes.states_i_vw
-PropertyIndex = Base.classes.props_i_vw
-StatesView = Base.classes.states_vw
-Survey = Base.classes.class_survey
+# StatesIndex = Base.classes.states_i_vw
+# PropertyIndex = Base.classes.props_i_vw
+# StatesView = Base.classes.states_vw
+# Survey = Base.classes.class_survey
 
 # Create Session obj
 session = Session(engine)
