@@ -12,7 +12,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}"/>
-    </head>
+        <style>
+            div.a {
+              text-indent: 20px;
+            }
+            
+            div.b {
+              text-indent: 35px;
+            }
+            
+            div.c {
+              text-indent: 50px;
+            }
+            div.d {
+              text-indent: 65px;
+            }
+            ul.a {
+              list-style-type: circle;
+            }
+            ul.b {
+            list-style-type: square;
+            }
+            </style>
+      </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
@@ -54,10 +76,265 @@
                   </nav>
             </div> <!--End Navbar row-->
 <!-------------------------------------------------------------------------------------------------->
-            <div class="col-md-12"> Add Documentation Content Here </div>
+            <div class="col-md-12"> Voter Influence Documentation Content</div>
+                                    
+<h2 class="titles">BACKGROUND</h2>
+
+<img src = "../VoterInfluence/static/assets/img/github_logo.png"/>
+The electoral college was created in the US for a couple of reasons.  The first purpose was to create a buffer between population and the selection of a President. The second as part of the structure of the government that gave extra power to the smaller states.  (https://www.historycentral.com/elections/Electoralcollgewhy.html)
+<br>
+<br>
+Consequently, although individuals vote during the elections, the American popular vote is not a direct factor when it comes to the elected U.S. President and Vice President.     
+<br>
+<h3 class="subtitles">About the Electoral College:</h3>
+<div class="a">
+•	538 electoral votes in the country
+</div>
+<div class="a">
+•	270 needed to win the election
+</div>
+<div class="a">
+•	538 is made up of ….
+</div>
+<div class="b">
+o	438 … 1 vote for each member of the US House of Representatives
+</div>
+<div class="c">
+	The distribution of representatives allocated to each state is evaluated every 10 years, with a minimum of 1 congressman per state.  
+</div>
+<div class="b">
+o	100 … 1 vote for each senator
+</div>
+<br>
+<h3 class="subtitles">Elections Results:</h3>
+<div class="a">
+•	5 times the winner of the electorate did not win the national popular vote
+</div>
+<div class="b">
+o	Most recently in 2016 and 2000
+</div>
+<div class="b">
+    o	The others occurred in 1888, 1876 and 1824
+ </div>    
+ <br>
+ <h3 class="subtitles">Electors:</h3>
+<div class="a">
+•	Are not required to vote for the person who won their states election.    
+</div>
+<div class="a">
+•	Are not required to vote at all; have the option to abstain.
+</div>
+<div class="c">
+o	7 such voters in 2016
+</div>
+<div class="a">
+•	Are subject to submitting the wrong name / typos.
+</div>
+<br> 
+<br>          
+<!-----------------------TEAM NAME------------------------->
+<h2 class="titles">TEAM NAME</h2>
+The population vs. the influence ratio for the state of Florida.  
+<br> 
+<br> 
+<!-----------------------GOAL------------------------->
+<h2 class="titles">GOAL</h2>
+This project helps shed some light on the true voting influence states have in Presidential elections for the last year of the 20th Century to present day.
+<br> 
+<br>
+<!-----------------------OBJECTIVE------------------------->
+<h2 class="titles">OBJECTIVE</h2>
+To tell a story, through data visualizations, regarding voter influence in the U.S elections. Our focus will include a dashboard.  This will show the variance in weighted votes from different states and the impact they carry in presidential elections due to the electoral college process.
+<br>
+<br>
+In addition, this project will demonstrate a “real time” voting process during the class presentation with user interaction.
+<br>
+<br>
+This project will include Python Flask powered by RESTful API, HTML/CSS, JavaScript, and MySQL.
+<br>
+<br>
+This project includes a dashboard page with multiple views all updating from the same data.
+<br>
+<br>
+<!-----------------------ETL------------------------->
+
+<h2 class="titles">ETL PROCESS</h2>
+<h3 class="subtitles">Extract</h3>
+<div class="a">
+•	Data for this project was acquired from the following websites:
+</div>
+<div class="c"> 
+https://www.infoplease.com/history-and-government/us-elections
+</div>
+<div class="c"> 
+https://transition.fec.gov/pubrec/fe2016/federalelections2016.xlsx
+</div>
+<div class="c"> 
+https://www.archives.gov/federal-register/electoral-college/votes/index.html
+</div>
+<br>
+<div class="a">
+•	We extracted spreadsheets into a comprehensive workbook and saved them to independent CSV files.  
+</div>
+<div class="a">
+•	Extracted independent data for election years 2000-2016 to include (but not limited to) state population and electoral votes (senators and house seats) and election winners.
+</div>
+<div class="a">
+•	Project included over 100 records.
+</div>
+<br>
+<h3 class="subtitles">Transpose</h3>
+<div class="a">
+    •	Datasets contained more columns than we needed, so we opted to only stage a subset of total data.
+</div>
+<div class="a">
+    •	Created import table structures to store the raw acquired data. 
+</div>
+<div class="a">
+•	Created relational table structures eliminate redundant information and enforce referential integrity.
+</div>
+<div class="a">
+    •	Created appropriate DML statements to transition the data form the import tables to the relational structures.
+</div>
+<div class="a">
+    •	Created logical views to hide join complexity. 
+</div>
+<h3 class="subtitles">Load</h3>
+<div class="a">
+    •	Created presentation views to transform the results into how we wanted the data rendered in the flask site.
+</div><div class="a">
+    ••	Created flask presentation table to simplify the logic within the flask application (allow native reflection by SQLAlchemy). 
+</div>
+<br>
+<br>
+<!---------------------FINAL VISUALIZATION-------------------->
+<h2 class="subtitles">FINAL VISUALIZATION</h2>
+Final visualization includes at least three views
+<br>
+Project will include some level of user-driven interaction (e.g. menus, dropdowns, textboxes, etc.)
+<br>
+
+<!-----Insert Pic------>
+
+<br>
+<br>
+  Project includes at least one JS Library not covered in class such as the “full screen control” that is added to map.    
+  <br>
+  <br>
+<!----------------------PROBLEMS AND CHALLENGES------------------->
+<h2 class="titles">PROBLEMS AND CHALLENGES</h2>
+<div class="a">
+    •	All data representing US election electoral and popular votes are not accurate.  We found data that had incorrect winners on one site. 
+</div>
+<div class="a">
+    •	Working with multiple files was challenging when merging all programs due to different computer systems.  
+</div>
+<div class="a">
+    •	2016 presidential popular votes were not as easy find online as anticipated.
+</div>
+<br>
+<br>
+<!----------------------OVERALL ASSESSMENT AND RECOMMENDATIONS------------------->
+<h2 class="titles">OVERALL ASSESSMENT AND RECOMMENDATIONS</h2>
+<div class="a">
+    •	The top 4 states in by population have close to 20 million people and hold a total of approximately one third (33%) of the U.S. population.
+</div>
+<div class="a">
+    •	Despite the population, these states (California, Texas, Florida and New York) have approximately one and a half (1.5) electoral vote per million people.
+</div>
+<div class="a">
+    •	Keep in mind, each state gets 2 senate votes in as it pertains to the electoral college; therefore, the house votes has the biggest influence on the votes in regard to the large states. 
+</div>
+<div class="a">
+    •	There are a couple of states, worth noting, that visually have close to the same population and influence (South Carolina and Kentucky) on the dual line chart.
+</div>
+<div class="a">
+    •	Those states with the minimum number of electoral votes (Montana, Delaware, South Dakota, North Dakota, Alaska, Vermont, and Wyoming) have low population but have the highest influence ranging from 3 votes per million to 5 votes per million).  These states have the high voter influence.  
+</div>
+<br>
+<br>
+<!---picture-->
+<br>
+<br>
 
 
-<!--------------------------------------------------------------------------------------------------------------------------->            
+<!--- OPTIONS FOR CHANGE-->
+<h3 class="subtitles">Options for Change</h3>
+<div class="a">
+    •	Eliminating electorate in favor of popular vote  
+</div>
+<div class="b">
+    o	Would level the playing field and every vote would have the same weight no matter which state the voter resides.
+</div>
+<div class="b">
+    o	Would encourage a higher voter turnout as each vote would now carry more weight.
+</div>
+<div class="b">
+    o	Would  require encourage candidates to focus on the county at large and not just “swing” states which have tendencies to flip from one national party to another.
+</div>
+<br>
+<div class="a">
+    •	Retain electorate concept; but eliminate the winter takes all approach within each state.
+</div>
+<div class="b">
+    o	Have each congress district cast its own regional winner / vote.
+</div>   
+<div class="b">
+    o	Would encourage higher voter turnout.
+</div>   
+<div class="b">
+    o	Open question:  How would the 2 senator votes be cast?
+</div> 
+<div class="c">
+    	Potentially eliminate the senator votes altogether.
+</div>
+<div class="c">
+    	The con of this approach is votes in small states would still weigh more than others; but not to the same influence as in the current system
+</div>
+<br>
+<div class="a">
+    •	Existing system discourages those in “fixed” party states (those which historically always vote for the same national party) from going to the polls.
+</div>
+<div class="b">
+o	A republican in California has no bearing on the election in the winner takes all approach.  Same can be said for a Democrat in Texas; the outcome is already determined prior to voting taking place. 
+</div>
+<div class="c">
+	Based on the past 5 elections; 70% of the electorate votes are already predetermined to “fixed” states. 
+</div>
+<div class="d">
+•	37 states  
+</div>
+<div class="c">
+	81 electorate votes are associated with moderate swing states (those which have votes differently in 1 election of the 5.  
+</div>
+<div class="d">
+•	7 states  
+</div>
+<div class="c">
+    	81 electorate votes are associated with true swing states (those which have votes differently in 2 of the 5 elections. 
+</div>
+<div class="d">
+•	6 states 
+</div>
+<br>
+<br>
+<!---CONSIDERATIONS FOR POSSIBLE FUTURE ENHANCEMENTS-->
+<h2 class="titles">CONSIDERATIONS FOR POSSIBLE FUTURE ENHANCEMENTS</h2>
+Understand the voter turnout impact by gender, economic status and age.
+<br>
+<br>
+Were there any variables that could have been evaluated that might have impacted Americans from voting (i.e., weather/road constraints, voting equipment challenges, rezoning of voting locations, etc.)?
+<br>
+<br>
+Does data from early voting or absentee data impact or persuade the popular vote on voting day (i.e., if your candidate is in the lead, then you might stay at home and not vote at all)?
+<br>
+<br>
+Evaluate the voter’s employment status.  Analyze data for voters employed and unemployed to determine if the traditional first Tuesday after the first Monday is a good day to cast votes.  Does the work day impact voting?
+<br>
+<br>
+
+
+<!----------------------------------------------------------------------------------------------------------------------->            
 <div class="row text-center"> <!--Start footer row-->              
   <div class="footer navbar-fixed-bottom nav-text">1.38 (c) | UCF Data Boot Camp</div>                         
 </div><!--End footer row-->
