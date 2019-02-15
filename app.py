@@ -65,18 +65,18 @@ def surveyResults():
 
         #Itterate throught list of tuples and push vote values into a list
         for i in yes:
-            yList.append(i[0])
+            yList.append(int(i[0]))
 
         for i in no:
-            nList.append(i[0])
+            nList.append(int(i[0]))
 
         for k in idk:
-            iList.append(k[0])
+            iList.append(int(k[0]))
         
         #Sum the lists and place into variables
-        yesTot = sum(yList)
-        noTot = sum(nList)
-        idkTot = sum(iList) 
+        yesTot = int(sum(yList))
+        noTot = int(sum(nList))
+        idkTot = int(sum(iList))
 
         #Create plot arrays
         yAxis = [yesTot, noTot, idkTot]

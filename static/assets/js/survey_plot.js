@@ -2,7 +2,8 @@
 
 function surveyPlot(xValue, yValue) {
     //source x value from SQL db
-       console.log(xValue, yValue);
+        var test = [5,8.9];
+        console.log(xValue, yValue, test);
         var surveyTrace = {
             //x = yes, no, idk variables from SQL db
             x: xValue,
