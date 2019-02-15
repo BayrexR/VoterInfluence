@@ -43,6 +43,50 @@ session = Session(engine)
 #========================
 app = Flask(__name__)
 
+#========================
+#       Helper functions
+#========================
+
+#==========
+#Get current survey results
+#==========
+def surveyResults():
+    #Run query
+    with engine.connect() as con:
+        yes = con.execute("SELECT YES FROM class_survey").fetchall()
+        no = con.execute("SELECT NO FROM class_survey").fetchall()
+        idk = con.execute("SELECT IDK FROM class_survey").fetchall()
+        
+        #Declare vars
+        yList = []
+        nList = []
+        iList = []
+
+        #Itterate throught list of tuples and push vote values into a list
+        for i in yes:
+            yList.append(i[0])
+
+        for i in no:
+            nList.append(i[0])
+
+        for k in idk:
+            iList.append(k[0])
+        
+        #Sum the lists and place into variables
+        yesTot = sum(yList)
+        noTot = sum(nList)
+        idkTot = sum(iList) 
+
+        #Create plot arrays
+        yAxis = [yesTot, noTot, idkTot]
+        xAxis = ["Yes", "No", "I Don't Know"]
+
+        #Bundle both trace lists into a single list for the return value
+        results = []
+        results.extend((yAxis, xAxis))
+
+    return (results)
+
 
 #========================
 #          Publish Routes
@@ -123,6 +167,22 @@ def postResults(value):
     rvalue = request.method
     return (
         render_template("survey.html")        
+    )
+
+#==============
+#Refresh survey route
+#==============
+@app.route("/apiV1.0/@dmin")
+def admin():
+    #Call results helper function to get vote counts
+    results = surveyResults()
+
+    #Split results into two separate trace lists
+    xAxis = results[1]
+    yAxis = results[0]
+
+    return (
+        render_template("survey.html", xAxis=xAxis, yAxis=yAxis)
     )
 
 
