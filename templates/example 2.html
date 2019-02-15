@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Bootstrap Demo</title>
+
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+
+<body>
+  <!-- Creates the Overall Grid -->
+  <div class="container">
+
+    <!-- Row 1 -->
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Header</h1>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row">
+      <div class="col-sm-3">
+        <p>•	Data for this project was acquired from , https://www.infoplease.com/history-and-government/us-elections, https://transition.fec.gov/pubrec/fe2016/federalelections2016.xlsx
+                •	We extracted spreadsheets into a comprehensive workbook and saved them to independent CSV files.  data_by_year
+                •	Extracted independent data for election years 2000-2016
+                </p>
+      </div>
+      <div class="col-sm-3">
+        <p>•	Datasets contained more columns than we needed, so we opted to only stage a subset of total data.
+                •	Created import table structures to store the raw acquired data.
+                •	Created relational table structures eliminate redundant information and enforce referential integrity.
+                •	Created appropriate DML statements to transition the data form the import tables to the relational structures.
+                •	Created logical views to hide join complexity.
+                </p>
+      </div>
+      <div class="col-sm-3">
+        <p>•	Created presentation views to transform the results into how we wanted the data rendered in the flask site.
+                •	Created flask presentation table to simplify the logic within the flask application (allow native reflection by SQLAlchemy)
+                </p>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="row">
+      <div class="col-sm-2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+      </div>
+      <div class="col-sm-2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+      </div>
+      <div class="col-sm-2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+      </div>
+      <div class="col-sm-2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+      </div>
+      <div class="col-sm-2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+      </div>
+      <div class="col-sm-2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur optio dolorem dolores odio alias perferendis, commodi cum. Natus libero cum dolore officia quia eveniet modi reprehenderit soluta ratione quisquam? Sequi.</p>
+      </div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="row">
+      <div class="col-sm-6">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti illo voluptates blanditiis nisi! Ullam dolore aspernatur, ratione error similique veniam iusto, labore repellat eaque nostrum optio doloribus illo nihil dolor?</p>
+      </div>
+      <div class="col-sm-6">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi sequi ex quam quia iste, nemo molestias dolor, qui dolorem voluptatibus ipsa maxime voluptas et deserunt porro repellendus veritatis nesciunt quisquam.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
