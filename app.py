@@ -4,6 +4,7 @@ import logging
 import sqlalchemy
 import datetime as dt
 import sys
+import json
 sys.path.append("static/assets/Resources/")
 import config as c
 from sqlalchemy.ext.automap import automap_base
@@ -91,10 +92,16 @@ def survey():
 #======================
 @app.route("/apiV1.0/get_results")
 def getResults():
-    surv_results = [] #obj with results data
-    results = jsonify(surv_results)
+    with engine.connect() as con:
+        yes = con.execute("SELECT SUM(YES) FROM class_survey;")
+        no = con.execute("SELECT SUM(NO) FROM class_survey;")
+        idk = con.execute("SELECT SUM(IDK) FROM class_survey;")
+    
+        xValue = ["Yes", "No","I Don't Know" ]
+        yValue = [yes, no, idk]
+           
     return (
-        render_template("survey.html", results=results)
+        render_template("survey.html", xValue=xValue, yValue=yValue )
     )
 
 #======================
