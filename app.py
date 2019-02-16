@@ -4,6 +4,7 @@ import logging
 import sqlalchemy
 import datetime as dt
 import sys
+import os
 import json
 sys.path.append("static/assets/Resources/")
 import config as c
@@ -21,7 +22,12 @@ logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
 #=======================
 #    Database Connection
 #=======================
-conn_string = f"{c.username}:{c.password}@etdq12exrvdjisg6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qlmvsrhei7a78mbk"
+#Heroku db environment variables
+usr = os.environ['username'] 
+pwd = os.environ['password']
+
+# conn_string = f"{c.username}:{c.password}@etdq12exrvdjisg6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qlmvsrhei7a78mbk"
+conn_string = f"{usr}:{pwd}@etdq12exrvdjisg6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qlmvsrhei7a78mbk"
 engine = create_engine(f'mysql://{conn_string}')
 
 
