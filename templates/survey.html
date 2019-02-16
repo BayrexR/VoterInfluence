@@ -11,8 +11,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}"/>
         <link rel="stylesheet" href="{{url_for('static', filename='assets/css/survey-style.css')}}"/>
+        <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}"/>
+        
         
     </head>
     <body>
@@ -121,12 +122,17 @@
     
                     // function from survey.js for plotly graph
                     
-                    </script>
+                </script>
             </div>
             
   
             <div class="row text-center"> <!--Start footer row-->              
-                <div class="footer navbar-fixed-bottom">1.38 (c) | UCF Data Boot Camp</div>                         
+                <div class="footer navbar-fixed-bottom nav-text">
+                    1.38 (c) | UCF Data Boot Camp
+                    <a href="https://github.com/BayrexR/VoterInfluence-Heroku">
+                        <img src="{{url_for('static', filename='assets/img/github_logo.png')}}" style="width:25px; height:25px;" id="GitHub-logo" alt="GitHub Logo" title="Click to see the repo on GitHub">
+                    </a>
+                </div>                         
             </div><!--End footer row-->
 
         </div><!--End main container-->

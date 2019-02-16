@@ -37,11 +37,11 @@ div{
 }
 
 .navbar-header .nav-text{
-    color: white important!;
+    color: white;
 }
 
 .dropdown .dropdown-toggle .nav-text{
-    color: white important!;
+    color: white;
 }
 
 
@@ -66,4 +66,8 @@ thead{
 
 li{
     margin-left: 50px;
+}
+
+#GitHub-logo {
+    margin-left:20px;
 }
