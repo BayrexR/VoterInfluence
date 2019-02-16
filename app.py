@@ -136,16 +136,14 @@ def survey():
 #======================
 @app.route("/apiV1.0/get_results")
 def getResults():
-    with engine.connect() as con:
-        yes = con.execute("SELECT SUM(YES) FROM class_survey;")
-        no = con.execute("SELECT SUM(NO) FROM class_survey;")
-        idk = con.execute("SELECT SUM(IDK) FROM class_survey;")
+    results = surveyResults()
     
-        xValue = ["Yes", "No","I Don't Know" ]
-        yValue = [yes, no, idk]
-           
+    #Split results into two separate trace lists
+    xAxis = results[1]
+    yAxis = results[0]
+
     return (
-        render_template("survey.html", xValue=xValue, yValue=yValue )
+        render_template("survey.html", xAxis=xAxis, yAxis=yAxis)
     )
 
 #======================
@@ -173,23 +171,39 @@ def postResults(value):
                 con.execute('INSERT INTO class_survey (IDK) VALUES (1);')
     rvalue = request.method
     return (
-        render_template("survey.html")        
+        redirect("/apiV1.0/get_results", code=302)        
     )
 
 #==============
-#Refresh survey route
+#Admin page route
 #==============
 @app.route("/apiV1.0/@dmin")
 def admin():
-    #Call results helper function to get vote counts
-    results = surveyResults()
+    "DB reset"
+    return (
+        render_template("admin.html")
+    )
 
-    #Split results into two separate trace lists
-    xAxis = results[1]
-    yAxis = results[0]
+#==============
+#Reset survey table route
+#==============
+@app.route("/apiV1.0/reset")
+def reset():
+    with engine.connect() as con:
+        con.execute("DROP TABLE IF EXISTS class_survey;")
+        con.execute("CREATE TABLE class_survey (vote_id INT AUTO_INCREMENT,YES INT(1) DEFAULT 0, NO INT(1) DEFAULT 0, IDK INT(1) DEFAULT 0,	PRIMARY KEY (vote_id));")
 
     return (
-        render_template("survey.html", xAxis=xAxis, yAxis=yAxis)
+        redirect("admin.html", code=302)
+    )
+
+#==============
+#Refresh survey results route
+#==============
+@app.route("/apiV1.0/refresh")
+def refresh():
+    return (
+        redirect("/apiV1.0/get_results", code=302)        
     )
 
 

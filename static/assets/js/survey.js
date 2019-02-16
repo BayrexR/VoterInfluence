@@ -34,6 +34,20 @@ function handleClick(vote) {
     location.href = route;
 };
 
+//Reset survey table button
+function dbReset() {
+    console.log('dbReset()');
+    var apiRoute = '/apiV1.0/reset'; 
+    location.href = apiRoute;
+};
+
+//Refresh survey plot data
+function dbRefresh() {
+    console.log('dbRefresh()');
+    var apiRoute = '/apiV1.0/refresh'; 
+    location.href = apiRoute;
+};
+
 
 // Use D3 `.on` to attach a click handler for the upvote
 // castedVote.on("click", function(value) {

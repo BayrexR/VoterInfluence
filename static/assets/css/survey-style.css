@@ -117,6 +117,18 @@ body{
 .navbar{
     z-index: 100;
     width: 100%;
+    background-color:rgb(0,174,243);
+    /* background-color: rgb(234,6,19); */
+    border-radius: 0px;
+    color: white;
+}
+
+.navbar-header .nav-text{
+    color: white;
+}
+
+.dropdown .dropdown-toggle .nav-text{
+    color: white;
 }
 
 a.dropdown-toggle{

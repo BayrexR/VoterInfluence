@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}"/>
+        <style>
+            div.a {
+              text-indent: 20px;
+            }
+            
+            div.b {
+              text-indent: 35px;
+            }
+            
+            div.c {
+              text-indent: 50px;
+            }
+            div.d {
+              text-indent: 65px;
+            }
+            ul.a {
+              list-style-type: circle;
+            }
+            ul.b {
+            list-style-type: square;
+            }
+            </style>
+      </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container"> <!--Start main container-->
+
+            <div class="row"> <!--Navbar row-->
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                      <!-- Brand and toggle get grouped for better mobile display -->
+                      <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand nav-text" href="/">Voter Influence</a>
+                      </div>
+                  
+                      <!-- Collect the nav links, forms, and other content for toggling -->
+                      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav navbar-right">
+                          <li><a href="#"></a></li>
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                              <span class="glyphicon glyphicon-menu-hamburger nav-text" aria-hidden="true" aria-label="menu"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="/">Home</a></li>
+                              <li><a href="/documentation">Documentation</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><a href="/survey">Survey</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                  </nav>
+            </div> <!--End Navbar row-->
+<!-------------------------------------------------------------------------------------------------->
+            <div>
+                <button class="btn btn-primary" onclick="dbReset();" id="dbReset" href= ()> Reset class survey table </button>
+                                    <!--^^onclick= insert vote counting function here^^-->
+            </div>
+
+
+<!----------------------------------------------------------------------------------------------------------------------->            
+<div class="row text-center"> <!--Start footer row-->              
+  <div class="footer navbar-fixed-bottom nav-text">1.38 (c) | UCF Data Boot Camp</div>                         
+</div><!--End footer row-->
+
+</div><!--End main container-->
+
+  <!--Latest minified jquery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- minified plotly.js -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- <script type="text/javascript" src="/static/assets/js/app.js"></script> -->
+<script type="text/javascript" src="/static/assets/js/survey.js"></script>
+<script type="text/javascript" src="/static/assets/js/survey_plot.js"></script>
+<script type="text/javascript" src="{{url_for('static', filename='assets/js/survey_plot.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='assets/js/survey.js')}}"></script>
+</body>
+</html>
