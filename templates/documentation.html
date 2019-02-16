@@ -28,10 +28,16 @@
               text-indent: 65px;
             }
             ul.a {
-              list-style-type: circle;
+            list-style-type: circle;
             }
             ul.b {
             list-style-type: square;
+            }
+            h2 {
+              font-size: 32px;
+            }
+            h3 {
+              font-size: 23px;
             }
             </style>
       </head>
@@ -76,38 +82,38 @@
                   </nav>
             </div> <!--End Navbar row-->
 <!-------------------------------------------------------------------------------------------------->
-            <div class="col-md-12"> Voter Influence Documentation Content</div>
-                                    
-<h2 class="titles">BACKGROUND</h2>
 
+<<<<<<< HEAD
+<img src = "../static/assets/img/banner.png"/>                                   
+<h2 class="titles">BACKGROUND</h2>
+The electoral college was created in the US for several reasons. Its first purpose was to create a buffer between population and the selection of a President. The second as part of the structure of the government that gave extra power to the smaller states.  (https://www.historycentral.com/elections/Electoralcollgewhy.html)
+=======
 <img src = "../VoterInfluence/static/assets/img/github_logo.png"/>
 
 The electoral college was created in the US for a couple of reasons.  The first purpose was to create a buffer between population and the selection of a President. The second as part of the structure of the government that gave extra power to the smaller states.  (https://www.historycentral.com/elections/Electoralcollgewhy.html)
+>>>>>>> 853eb0f54be1110ec60f27f9d21cf42843e758e6
 <br>
 <br>
 Consequently, although individuals vote during the elections, the American popular vote is not a direct factor when it comes to the elected U.S. President and Vice President.     
 <br>
-<h3 class="subtitles">About the Electoral College:</h3>
+<h3 class="subtitles">About the Electoral College</h3>
 <div class="a">
-•	538 electoral votes in the country
+•	538 total electoral votes made up of the following:
+</div>
+<div class="b">
+o	438 … 1 vote for each member of the US House of Representatives
+</div>
+<div class="b">
+o	100 … 1 vote for each senator
 </div>
 <div class="a">
 •	270 needed to win the election
 </div>
 <div class="a">
-•	538 is made up of ….
-</div>
-<div class="b">
-o	438 … 1 vote for each member of the US House of Representatives
-</div>
-<div class="c">
-	The distribution of representatives allocated to each state is evaluated every 10 years, with a minimum of 1 congressman per state.  
-</div>
-<div class="b">
-o	100 … 1 vote for each senator
+•	The distribution of representatives allocated to each state is evaluated every 10 years, with a minimum of 1 congressman per state.
 </div>
 <br>
-<h3 class="subtitles">Elections Results:</h3>
+<h3 class="subtitles">Elections Results</h3>
 <div class="a">
 •	5 times the winner of the electorate did not win the national popular vote
 </div>
@@ -118,7 +124,7 @@ o	Most recently in 2016 and 2000
     o	The others occurred in 1888, 1876 and 1824
  </div>    
  <br>
- <h3 class="subtitles">Electors:</h3>
+ <h3 class="subtitles">Electors</h3>
 <div class="a">
 •	Are not required to vote for the person who won their states election.    
 </div>
@@ -165,6 +171,12 @@ This project includes a dashboard page with multiple views all updating from the
 •	Data for this project was acquired from the following websites:
 </div>
 <div class="c"> 
+<<<<<<< HEAD
+Federal Election Commission - https://www.fec.gov/
+</div>
+<div class="c"> 
+National Archives and Records Administration - https://www.archives.gov/federal-register/electoral-college/votes/index.html
+=======
   <a href="https://www.infoplease.com/history-and-government/us-elections">https://www.infoplease.com/history-and-government/us-elections</a>
 </div>
 <div class="c"> 
@@ -172,6 +184,7 @@ This project includes a dashboard page with multiple views all updating from the
 </div>
 <div class="c"> 
   <a href="https://www.archives.gov/federal-register/electoral-college/votes/index.html">https://www.archives.gov/federal-register/electoral-college/votes/index.html</a>
+>>>>>>> 853eb0f54be1110ec60f27f9d21cf42843e758e6
 </div>
 <br>
 <div class="a">
@@ -183,6 +196,10 @@ This project includes a dashboard page with multiple views all updating from the
 <div class="a">
 •	Project included over 100 records.
 </div>
+<img src = "../static/assets/img/FEC_Data.png"/>
+<br>
+<br>
+<img src = "../static/assets/img/raw_data.png"/>
 <br>
 <h3 class="subtitles">Transpose</h3>
 <div class="a">
@@ -200,11 +217,14 @@ This project includes a dashboard page with multiple views all updating from the
 <div class="a">
     •	Created logical views to hide join complexity. 
 </div>
+<br>
+<br>
+<img src = "../static/assets/img/views.png"/>
 <h3 class="subtitles">Load</h3>
 <div class="a">
     •	Created presentation views to transform the results into how we wanted the data rendered in the flask site.
 </div><div class="a">
-    ••	Created flask presentation table to simplify the logic within the flask application (allow native reflection by SQLAlchemy). 
+    •	Created flask presentation table to simplify the logic within the flask application (allow native reflection by SQLAlchemy). 
 </div>
 <br>
 <br>
@@ -216,10 +236,12 @@ Project will include some level of user-driven interaction (e.g. menus, dropdown
 <br>
 
 <!-----Insert Pic------>
-
+<img src = "../static/assets/img/dashboard.png"/>
 <br>
 <br>
-  Project includes at least one JS Library not covered in class such as the “full screen control” that is added to map.    
+<br>
+  Project includes at least one JS Library not covered in class such as the “full screen control” that is added to map.
+  <img src = "../static/assets/img/new_plugin.png"/>   
   <br>
   <br>
 <!----------------------PROBLEMS AND CHALLENGES------------------->
@@ -255,6 +277,7 @@ Project will include some level of user-driven interaction (e.g. menus, dropdown
 <br>
 <br>
 <!---picture-->
+<img src = "../static/assets/img/state_data.png"/>
 <br>
 <br>
 
@@ -287,10 +310,10 @@ Project will include some level of user-driven interaction (e.g. menus, dropdown
     o	Open question:  How would the 2 senator votes be cast?
 </div> 
 <div class="c">
-    	Potentially eliminate the senator votes altogether.
+    -	Potentially eliminate the senator votes altogether.
 </div>
 <div class="c">
-    	The con of this approach is votes in small states would still weigh more than others; but not to the same influence as in the current system
+    -	The con of this approach is votes in small states would still weigh more than others; but not to the same influence as in the current system
 </div>
 <br>
 <div class="a">
@@ -300,27 +323,27 @@ Project will include some level of user-driven interaction (e.g. menus, dropdown
 o	A republican in California has no bearing on the election in the winner takes all approach.  Same can be said for a Democrat in Texas; the outcome is already determined prior to voting taking place. 
 </div>
 <div class="c">
-	Based on the past 5 elections; 70% of the electorate votes are already predetermined to “fixed” states. 
+-	Based on the past 5 elections; 70% of the electorate votes are already predetermined to “fixed” states. 
 </div>
 <div class="d">
 •	37 states  
 </div>
 <div class="c">
-	81 electorate votes are associated with moderate swing states (those which have votes differently in 1 election of the 5.  
+-	81 electorate votes are associated with moderate swing states (those which have votes differently in 1 election of the 5.  
 </div>
 <div class="d">
 •	7 states  
 </div>
 <div class="c">
-    	81 electorate votes are associated with true swing states (those which have votes differently in 2 of the 5 elections. 
+    -	81 electorate votes are associated with true swing states (those which have votes differently in 2 of the 5 elections. 
 </div>
 <div class="d">
 •	6 states 
 </div>
 <br>
 <br>
-<!---CONSIDERATIONS FOR POSSIBLE FUTURE ENHANCEMENTS-->
-<h2 class="titles">CONSIDERATIONS FOR POSSIBLE FUTURE ENHANCEMENTS</h2>
+<!---CONSIDERATIONS FOR FUTURE ENHANCEMENTS-->
+<h2 class="titles">CONSIDERATIONS FOR FUTURE ENHANCEMENTS</h2>
 Understand the voter turnout impact by gender, economic status and age.
 <br>
 <br>
