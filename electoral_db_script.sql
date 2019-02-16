@@ -475,7 +475,7 @@ select 'voter_turnout'      prop_return, 'Voter Turnout'               prop_disp
 ;
 
 /* Survey results table */
-CREATE TABLE survey_results (
+CREATE TABLE class_survey (
 	vote_id INT AUTO_INCREMENT,
 	YES INT(1) DEFAULT 0,
 	NO INT(1) DEFAULT 0,
