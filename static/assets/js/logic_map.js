@@ -243,9 +243,9 @@ function createMap() {
     // Create the tile layers that will be the background of our map
     //
     // ******************************************************************
-    // const API_KEY = "pk.eyJ1IjoiYmF5cmV4ciIsImEiOiJjanIzbzBvZGEwOTRkNDNuNXg4NTJmcmIwIn0.ozOI5yWBCVcx5X0yujQVLA";
+    const API_KEY = "pk.eyJ1IjoiYmF5cmV4ciIsImEiOiJjanIzbzBvZGEwOTRkNDNuNXg4NTJmcmIwIn0.ozOI5yWBCVcx5X0yujQVLA";
     //Heroku API key environment variable
-    const API_KEY = process.env.API_KEY;
+    // const API_KEY = process.env.API_KEY;
     var lightmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
       attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>",
       maxZoom: 18,
