@@ -177,7 +177,12 @@
       {% endfor %}
 
     <div class="row text-center"> <!--Start footer row-->              
-      <div class="footer navbar-fixed-bottom nav-text">1.38 (c) | UCF Data Boot Camp</div>                        
+      <div class="footer navbar-fixed-bottom nav-text">
+        1.38 (c) | UCF Data Boot Camp
+        <a href="https://github.com/BayrexR/VoterInfluence-Heroku">
+          <img src="{{url_for('static', filename='assets/img/github_logo.png')}}" style="width:25px; height:25px;" id="GitHub-logo" alt="GitHub Logo" title="Click to see the repo on GitHub">
+        </a>
+      </div>                        
     </div><!--End footer row-->
   </div><!--End main container-->
   
@@ -192,10 +197,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
   <!-- API Key -->
   <script type="text/javascript" src="static/assets/js/config.js"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='assets/js/config.js')}}"></script>
   <!-- Our JavaScript -->
   <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script type="text/javascript" src="static/assets/js/logic_plot.js"></script>
   <script type="text/javascript" src="static/assets/js/logic_map.js"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='assets/js/logic_plot.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='assets/js/logic_map.js')}}"></script>
 
 </body>
 </html>

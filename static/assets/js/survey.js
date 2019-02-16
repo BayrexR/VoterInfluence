@@ -29,7 +29,7 @@ function handleClick(vote) {
     //Seet session stage variable to reference and hide survey once vote posted
     sessionStorage.setItem('voted', true);
     // https://voter-influence.herokuapp.com
-    route = '/apiV1.0/post_results/'+voteValue;
+    route = 'https://voter-influence.herokuapp.com/apiV1.0/post_results/'+voteValue;
     console.log(route);
     location.href = route;
 };
@@ -37,14 +37,14 @@ function handleClick(vote) {
 //Reset survey table button
 function dbReset() {
     console.log('dbReset()');
-    var apiRoute = '/apiV1.0/reset'; 
+    var apiRoute = 'https://voter-influence.herokuapp.com/apiV1.0/reset'; 
     location.href = apiRoute;
 };
 
 //Refresh survey plot data
 function dbRefresh() {
     console.log('dbRefresh()');
-    var apiRoute = '/apiV1.0/refresh'; 
+    var apiRoute = 'https://voter-influence.herokuapp.com/apiV1.0/refresh'; 
     location.href = apiRoute;
 };
 

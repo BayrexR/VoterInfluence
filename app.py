@@ -171,7 +171,7 @@ def postResults(value):
                 con.execute('INSERT INTO class_survey (IDK) VALUES (1);')
     rvalue = request.method
     return (
-        redirect("/apiV1.0/get_results", code=302)        
+        redirect("https://voter-influence.herokuapp.com/apiV1.0/get_results", code=302)        
     )
 
 #==============
@@ -194,7 +194,7 @@ def reset():
         con.execute("CREATE TABLE class_survey (vote_id INT AUTO_INCREMENT,YES INT(1) DEFAULT 0, NO INT(1) DEFAULT 0, IDK INT(1) DEFAULT 0,	PRIMARY KEY (vote_id));")
 
     return (
-        redirect("admin.html", code=302)
+        redirect("https://voter-influence.herokuapp.com/apiV1.0/@dmin", code=302)
     )
 
 #==============
@@ -203,7 +203,7 @@ def reset():
 @app.route("/apiV1.0/refresh")
 def refresh():
     return (
-        redirect("/apiV1.0/get_results", code=302)        
+        redirect("https://voter-influence.herokuapp.com/apiV1.0/get_results", code=302)        
     )
 
 
