@@ -474,6 +474,14 @@ select 'voting_pop_elig'    prop_return, 'Voting Population Eligible'  prop_disp
 select 'voter_turnout'      prop_return, 'Voter Turnout'               prop_display from dual
 ;
 
+/* Survey results table */
+CREATE TABLE class_survey (
+	vote_id INT AUTO_INCREMENT,
+	YES INT(1) DEFAULT 0,
+	NO INT(1) DEFAULT 0,
+	IDK INT(1) DEFAULT 0,
+	PRIMARY KEY (vote_id)
+);
 
 /*
 select * from states_i_vw;
