@@ -37,11 +37,11 @@ div{
 }
 
 .navbar-header .nav-text{
-    color: white;
+    color: white important!;
 }
 
 .dropdown .dropdown-toggle .nav-text{
-    color: white;
+    color: white important!;
 }
 
 
